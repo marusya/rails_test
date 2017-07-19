@@ -1,0 +1,38 @@
+<div id="main">
+
+  <!-- left column -->
+  <div id="left">
+
+    <!-- Форма для отправки текста -->
+    <%= form_tag do %>
+        <%= text_area_tag(:inputData) %>
+        <%= submit_tag('Отправить', id: 'submitBtn') %>
+    <% end %>
+
+    <script>
+        $(document).ready(function() {
+            $("#submitBtn").click(function(event) { // то что произойдет при клике на кнопку
+                event.preventDefault(); // предотвращает отправку формы
+                var text = $("#inputData").val(); // текст, введённый в поле ввода
+                createSentence(text); // или ок, или ошибка
+            });
+        });
+    </script>
+  </div>
+  <!-- end left column -->
+
+  <!-- right column -->
+  <div id="right">
+    <div id="count"><%= t('welcome.sentences', :count => count) %></div>
+
+    <div id="time">
+      <ol id="time_inner">
+      <% model.all.each do |sentence| %>
+          <li><%= sentence.created_at.strftime('%d.%m.%Y %H:%M') %></li>
+      <% end %>
+      </ol>
+    </div>
+  </div>
+  <!-- end right column -->
+
+</div>

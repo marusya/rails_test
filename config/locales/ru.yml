@@ -1,0 +1,8 @@
+ru:
+  welcome:
+      sentences:
+        zero: "0 запросов"
+        one: "%{count} запрос"
+        few: "%{count} запроса"
+        other: "%{count} запросов"
+        many: "%{count} запросов"
